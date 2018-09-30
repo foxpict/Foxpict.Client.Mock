@@ -53,13 +53,13 @@ namespace foxpict.client.web {
       services.AddSwaggerGen (c => {
         c.SwaggerDoc ("v1", new Info {
           Version = "v1",
-            Title = "foxpict.client.web API",
+            Title = "Foxpict.Client.Web API",
             Description = "A simple example ASP.NET Core Web API",
             Contact = new Contact { Name = "Juan García Carmona", Email = "d.jgc.it@gmail.com", Url = "https://wisegeckos.com" },
         });
         // Set the comments path for the Swagger JSON and UI.
         var basePath = AppContext.BaseDirectory;
-        var xmlPath = Path.Combine (basePath, "foxpict.client.web.xml");
+        var xmlPath = Path.Combine (basePath, "Foxpict.Client.Web.xml");
         c.IncludeXmlComments (xmlPath);
       });
       services.AddCors ();
