@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +22,13 @@ namespace foxpict.client.web {
       // NLog: setup the logger first to catch all errors
       var logger = NLog.Web.NLogBuilder.ConfigureNLog ("nlog.config").GetCurrentClassLogger ();
       try {
+        // SSL接続例外除外
+        ServicePointManager.ServerCertificateValidationCallback += (
+          sender,
+          certificate,
+          chain,
+          sslPolicyErrors) => true;
+
         BuildWebHost (args).Run ();
       } catch (Exception ex) {
         //NLog: catch setup errors
@@ -49,6 +57,7 @@ namespace foxpict.client.web {
         logging.ClearProviders ();
         logging.SetMinimumLevel (Microsoft.Extensions.Logging.LogLevel.Trace);
       })
+      .UseUrls ("http://localhost:5011")
       .UseStartup<Startup> ()
       .Build ();
   }
