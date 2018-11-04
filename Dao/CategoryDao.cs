@@ -16,6 +16,10 @@ namespace Foxpict.Client.Web.Dao {
       this.mlogger = LogManager.GetCurrentClassLogger ();
     }
 
+    public List<Category> FindCategory (bool? albumCategory, long[] labelId) {
+      throw new NotImplementedException ();
+    }
+
     /// <summary>
     /// カテゴリを読み込みます
     /// </summary>
